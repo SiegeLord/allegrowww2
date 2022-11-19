@@ -15,7 +15,7 @@ jobs:
       - name: Install and Build
         run: |
             sudo apt-get update
-            sudo apt-get install -y pandoc lua5.3
+            sudo apt-get install -y pandoc
             make
 
       - name: Deploy
