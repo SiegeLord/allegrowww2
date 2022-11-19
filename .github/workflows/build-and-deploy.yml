@@ -7,7 +7,7 @@ jobs:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout
         uses: actions/checkout@v3
         with:
             fetch-depth: 1
@@ -15,7 +15,7 @@ jobs:
       - name: Install and Build
         run: |
             sudo apt-get update
-            sudo apt-get install -y make pandoc
+            sudo apt-get install -y pandoc lua
             make
 
       - name: Deploy
@@ -30,7 +30,8 @@ jobs:
             clean-exclude: |
                 CNAME
                 donations.html
-                a5docs/4***
+                a5docs/4*/**
                 a5docs/5*/**
                 a5docs/trunk**
                 docs/docs/**
+                search/**
