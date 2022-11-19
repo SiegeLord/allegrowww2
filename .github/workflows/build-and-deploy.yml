@@ -12,9 +12,15 @@ jobs:
         with:
             fetch-depth: 1
 
+      - name: Download pandoc
+        uses: dsaltares/fetch-gh-release-asset@1.1.0
+        with:
+            repo: jgm/pandoc
+            version: tags/2.19.2
+            file: pandoc-2.19.2-1-amd64.deb
+            target: pandoc-2.19.2-1-amd64.deb
       - name: Install and Build
         run: |
-            curl -O https://github.com/jgm/pandoc/releases/download/2.19.2/pandoc-2.19.2-1-amd64.deb
             sudo dpkg -i pandoc-2.19.2-1-amd64.deb
             pandoc --version
             make
